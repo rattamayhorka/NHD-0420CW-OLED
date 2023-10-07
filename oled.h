@@ -4,6 +4,10 @@
 #define OLED_H
 
 
+#define SCL PB6
+#define SDI PB5
+#define CS PB1
+
 #define FUNCTION_SET 0x20
 #define LINES_2_4 0x08
 #define LINES_1_3 0x00
@@ -32,6 +36,7 @@ void functionSet(uint8_t lines, uint8_t doubleHeight, uint8_t extensionRegIS);
 void setDisplay(uint8_t display, uint8_t cursor, uint8_t cursorBlink);
 void OLED_gotoxy(int x, int y);
 void OLED_Init(void);
+void OLED_Puts(const char *s);
 
 void OLED_clrscr(void);
 void OLED_Home(void);

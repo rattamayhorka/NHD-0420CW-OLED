@@ -28,6 +28,7 @@ int main(void){
     _delay_ms(1);
     OLED_Home(); // Return Home
     _delay_ms(1);
+    /*
     OLED_Data('H'); //Space
     OLED_Data('e'); //Space
     OLED_Data('l');
@@ -40,10 +41,12 @@ int main(void){
     OLED_Data('l');
     OLED_Data('d');
     OLED_Data('!'); //Space
-    _delay_ms(1000);
+    */
+    OLED_Puts("Hola mundo!");
+    _delay_ms(5000);
     OLED_clrscr(); // Clear display
     OLED_Home();
-    _delay_ms(1000);
+    _delay_ms(500);
     OLED_Init();
   }
 }

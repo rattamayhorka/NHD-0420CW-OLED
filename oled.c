@@ -6,6 +6,9 @@
 
 extern uint8_t _rowOffsets[4];
 
+#define SCL PB6
+#define SDI PB5
+#define CS PB1
 
 #define FUNCTION_SET 0x20
 #define LINES_2_4 0x08
@@ -28,21 +31,22 @@ extern uint8_t _rowOffsets[4];
 #define SET_DDRAM_ADDR 0x80
 
 
+
 void putData (uint8_t data){
   for (int m = 0; m < 8; m++){
     if ((data & 0x01) == 0x01){ // Comapring the LSB i.e. (0000 0001)
-      PORTB |= (1 << PB5);
+      PORTB |= (1 << SDI);
     }
     else{
-      PORTB &= ~(1 << PB5);
+      PORTB &= ~(1 << SDI);
     }
     //while (0);
     data = (data >> 1); // Left Shift 1 bit to be compared
-    PORTB &= ~(1 << PB6);  // Beginning of CLOCK Cycle
+    PORTB &= ~(1 << SCL);  // Beginning of CLOCK Cycle
     _delay_us(1);
-    PORTB |= (1 << PB6);
+    PORTB |= (1 << SCL);
     _delay_us(1);
-    PORTB &= ~(1 << PB6); // Ending of CLOCK Cycle
+    PORTB &= ~(1 << SCL); // Ending of CLOCK Cycle
     _delay_us(1);
   }
 }
@@ -51,7 +55,7 @@ void OLED_Command(unsigned char data){ // Command Writing Function
   uint8_t firstByte = data & 0x0F; // Clear upper nibble.
   uint8_t secondByte = (data >> 4) & 0x0F; // Right shift by 4 and clear upper nibble.
 
-  PORTB &= ~(1 << PB1); // clearSC() PB1 MUST be low for that transfer of data
+  PORTB &= ~(1 << CS); // clearSC() CS MUST be low for that transfer of data
   _delay_us(1);
 
   // Send 0b00011111 to enter command write mode
@@ -61,7 +65,7 @@ void OLED_Command(unsigned char data){ // Command Writing Function
   putData(firstByte);
   putData(secondByte);
 
-  PORTB |= (1 << PB1); // antes setPB1()END of data Line
+  PORTB |= (1 << CS); // antes setCS()END of data Line
 
 }
 
@@ -69,7 +73,7 @@ void OLED_Data(unsigned char data){
   uint8_t firstByte = data & 0x0F; // Clear upper nibble.
   uint8_t secondByte = (data >> 4) & 0x0F; // Right shift by 4 and clear upper nibble.
 
-  PORTB &= ~(1 << PB1); // clearSC() PB1 MUST be low for that transfer of data
+  PORTB &= ~(1 << CS); // clearSC() CS MUST be low for that transfer of data
   _delay_us(1);
 
   // Send 0b00011111 to enter data write mode
@@ -79,7 +83,7 @@ void OLED_Data(unsigned char data){
   putData(firstByte);
   putData(secondByte);
 
-  PORTB |= (1 << PB1);; // antes setPB1()END of data Line
+  PORTB |= (1 << CS);; // antes setCS()END of data Line
 
 }
 
@@ -139,3 +143,18 @@ void OLED_clrscr(void){
 void OLED_Home(void){
   OLED_Command(0x02); // Return Home (0,0)
 }
+
+void OLED_Puts(const char *s)
+/* print string on lcd (no auto linefeed) */
+{
+    register char c;
+
+    while ( (c = *s++) ) {
+        OLED_Data(c);
+    }
+
+}
+
+
+
+
