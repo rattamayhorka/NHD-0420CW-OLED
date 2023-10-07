@@ -18,3 +18,7 @@ oledPin 17 (BS0) -> Ground
 oledPin 18 (BS1) -> Ground
 oledPin 19 (BS2) -> Ground
 oledPin 20 (Vss) -> Ground
+
+por implementar: 
+
+    lcd_gotoxy(0, 0);

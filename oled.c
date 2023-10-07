@@ -101,9 +101,9 @@ void OLED_gotoxy(int x, int y){
   _delay_ms(1);
 }
 void OLED_Init(void){
-     OLED_Command(0x2A); // Function Set (extended command set)
-     OLED_Command(0x71); // Function Selection A
-     OLED_Data(0x5C);    // Enable 5V Regulator
+  OLED_Command(0x2A); // Function Set (extended command set)
+  OLED_Command(0x71); // Function Selection A
+  OLED_Data(0x5C);    // Enable 5V Regulator
   OLED_Command(0x28); // Function Set (fundamental command set)
   OLED_Command(0x08); // Display off, Cursor off, Blink off
   OLED_Command(0x2A); // Function Set (extended command set)
