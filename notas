@@ -1,0 +1,20 @@
+Pin 1 (Vss) -> Ground
+Pin 2 (Vdd) -> +5V
+Pin 3 (RegVdd) -> +5V
+Pin 4 (NC) -> Ground
+Pin 5 (NC) -> Ground
+Pin 6 (NC) -> Ground
+Pin 7 (SCLK) -> Pin 12 (Example Code) (SCL PB6 )
+Pin 8 (SDI) -> Pin 11 (Example Code) (SDI PB5)
+Pin 9 (SDO) -> Ground
+Pin 10 (NC) -> Ground
+Pin 11 (NC) -> Ground
+Pin 12 (NC) -> Ground
+Pin 13 (NC) -> Ground
+Pin 14 (NC) -> Ground
+Pin 15 (/CS) -> Pin 9 (Example Code) (CS PB1)
+Pin 16 (/RES) -> +5V
+Pin 17 (BS0) -> Ground
+Pin 18 (BS1) -> Ground
+Pin 19 (BS2) -> Ground
+Pin 20 (Vss) -> Ground
