@@ -1,8 +1,21 @@
-# NHD-0420CW-OLED
-OLED NHD-0420CW-OLED
+# NHD-0420CW-XX Example
 
-CONECTIONS:
- 
+Example Code for Newhaven Display's [0420CW Slim OLED] for MICROCHIP AVR-C (https://www.newhavendisplay.com/nhd0420cwab3-p-8038.html)!
+
+Target: `Atmega 32`\
+Language: `AVR-C`\
+Interface: `Serial SPI`\
+Display Voltage: `3.3V` or `5V`\
+Logic Voltage: `3.3V` or `5V`
+
+## Compatible Displays:
+- [NHD-0420CW-AG3](https://www.newhavendisplay.com/nhd0420cwag3-p-7828.html)
+- [NHD-0420CW-AY3](https://www.newhavendisplay.com/nhd0420cway3-p-7829.html)
+- [NHD-0420CW-AB3](https://www.newhavendisplay.com/nhd0420cwab3-p-8038.html)
+- [NHD-0420CW-AW3](https://www.newhavendisplay.com/nhd0420cwaw3-p-9587.html)
+
+## CONNECTIONS:
+
 OLED_Pin 1 (Vss) -> Ground
 OLED_Pin 2 (Vdd) -> +5V
 OLED_Pin 3 (RegVdd) -> +5V
