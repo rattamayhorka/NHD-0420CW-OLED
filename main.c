@@ -6,11 +6,12 @@
 #include <string.h>
 #include "oled.h"
 
-uint8_t _rowOffsets[4];
+//uint8_t _rowOffsets[4];
 
 int main(void){
 
-  DDRB |= (1 << PB6) | (1 << PB5) | (1 << PB1);
+  DDRB |= (1 << PB6) | (1 << PB5) | (1 << PB1) | (1 << PB0);
+  
 
   OLED_Init();
   _delay_ms(200);
@@ -19,10 +20,22 @@ int main(void){
  
     OLED_clrscr(); // Clear the display
     OLED_Home(); // Return Home
+    OLED_gotoxy(0,0);
     OLED_Puts("Hola mundo!");
-    _delay_ms(5000);
+    OLED_gotoxy(0,1);
+    OLED_Puts("123456");
+    OLED_gotoxy(0,2);
+    OLED_Puts("7890");
+    OLED_gotoxy(0,3);
+    OLED_Puts("RATTAMAYHORKA");
+    OLED_gotoxy(10,2);
+    OLED_Puts("ROCK");
+    
+    PORTB &= ~(1 << PB0);
+    _delay_ms(2500);
     OLED_clrscr(); // Clear display
-    _delay_ms(1000);
+    PORTB |= (1 << PB0);
+    _delay_ms(500);
     OLED_Init();
   }
 }

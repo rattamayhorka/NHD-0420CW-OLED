@@ -8,6 +8,9 @@
 #define SDI PB5
 #define CS PB1
 
+
+extern uint8_t _rowOffsets[4];
+
 #define FUNCTION_SET 0x20
 #define LINES_2_4 0x08
 #define LINES_1_3 0x00

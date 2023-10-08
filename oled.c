@@ -4,7 +4,7 @@
 #include <avr/interrupt.h>
 #include <string.h>
 
-extern uint8_t _rowOffsets[4];
+extern uint8_t _rowOffsets[4] = {0x00,0x20,0x40,0x60};
 
 #define SCL PB6
 #define SDI PB5
@@ -31,6 +31,10 @@ extern uint8_t _rowOffsets[4];
 #define SET_DDRAM_ADDR 0x80
 
 
+//_rowOffsets[0] = 0x00;
+//_rowOffsets[1] = 0x20;
+//_rowOffsets[2] = 0x40;
+//_rowOffsets[3] = 0x60;
 
 void putData (uint8_t data){
   for (int m = 0; m < 8; m++){
@@ -100,6 +104,7 @@ void OLED_gotoxy(int x, int y){
   OLED_Command(SET_DDRAM_ADDR | (_rowOffsets[y] + x));
   _delay_ms(1);
 }
+
 void OLED_Init(void){
   OLED_Command(0x2A); // Function Set (extended command set)
   OLED_Command(0x71); // Function Selection A
@@ -135,7 +140,6 @@ void OLED_Init(void){
   _delay_ms(10);
 }
 
-
 void OLED_clrscr(void){
   OLED_Command(0x01); // Clear display
 }
@@ -154,7 +158,6 @@ void OLED_Puts(const char *s)
     }
 
 }
-
 
 
 
