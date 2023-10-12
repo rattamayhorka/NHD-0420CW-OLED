@@ -207,8 +207,8 @@ full: $(TARGET).hex $(TARGET).eep
 
 burn-fuse: 
 
-
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -v -U lfuse:w:0xFF:m -U hfuse:w:0x99:m 
+#for internal cristal at 8MHz -v -U lfuse:w:0xDD:m -U hfuse:w:0xD9:m -U lock:w:0xFF:m
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -v -U lfuse:w:0xFD:m -U hfuse:w:0x99:m 
 
 read-fuse:
 

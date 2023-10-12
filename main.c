@@ -6,7 +6,6 @@
 #include <string.h>
 #include "oled.h"
 
-//uint8_t _rowOffsets[4];
 
 int main(void){
 
@@ -32,10 +31,10 @@ int main(void){
     OLED_Puts("ROCK");
     
     PORTB &= ~(1 << PB0);
-    _delay_ms(2500);
+    _delay_ms(1000);
     OLED_clrscr(); // Clear display
     PORTB |= (1 << PB0);
-    _delay_ms(500);
+    _delay_ms(1000);
     OLED_Init();
   }
 }
